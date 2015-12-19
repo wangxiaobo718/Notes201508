@@ -41,7 +41,6 @@ function changeBg() {
     }
 }
 changeBg();
-
 //3、实现表格排序
 function sortList(index) {
     //a、将类数组转换为数组
@@ -53,9 +52,9 @@ function sortList(index) {
         var curIn = a.cells[index].innerHTML;
         var nexIn = b.cells[index].innerHTML;
         //对于数字我们直接的相减,对于非数字,我们用localeCompare
-            var curInNum = parseFloat(curIn);
-            var nexInNum = parseFloat(nexIn);
-            if (isNaN(curInNum)) {
+        var curInNum = parseFloat(curIn);
+        var nexInNum = parseFloat(nexIn);
+        if (isNaN(curInNum)) {
             return curIn.localeCompare(nexIn);
         }
         return curInNum - nexInNum;
@@ -96,7 +95,7 @@ for (var i = 0; i < oThs.length; i++) {
     if (oTh.className === "cursor") {
         oTh.index = i;
         oTh.onclick = function () {
-            sortList.call(this, this.index);
+            sortList.call(this,this.index);
         }
     }
 }

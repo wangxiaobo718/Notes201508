@@ -5,6 +5,9 @@
     <title></title>
 </head>
 <body>
+<div style="height: 3000px">
+
+</div>
 <script type="text/javascript">
     //之前学习的client系列和offset系列以及scrollWidth、scrollHeight等11个属性都是"只读的属性"(只能获取值,不能修改值),例如：oDiv.clientWidth=1000; 元素的样式是不会发生任何改变的
     //scrollLeft、scrollTop是"可读写的属性"(既可以获取值,也可以修改值)
@@ -20,19 +23,31 @@
     //document.body.scrollTop=-1000;
     //虽然设置的值已经比0小了,但是页面滚动到顶部将不会在继续滚动,并且我们在重新的获取document.documentElement.scrollTop||document.body.scrollTop,得到的结果依然是0
     //对于一个页面来说最大的scrollTop=当前页面的高度 减去 一屏幕的高度
-    var maxST = win("scrollHeight") - win("clientHeight");
-    win("scrollTop", maxST);
-
-    //因为操作页面和浏览器的盒子模型,为了兼容所有的浏览器,每一次都要document.documentElement.xxx||document.body.xxx写起来非常的麻烦,而win是把一些每次必写的进行封装
-    //attr是我们要操作的属性名(scrollHeight/clientHeight...)
-    //value的情况特殊:传递了值,我们默认是给页面设置值,不传递值我们默认是获取页面的值
-    function win(attr, value) {
-        if (typeof value === "undefined") {
-            return document.documentElement[attr] || document.body[attr];
+//    var maxST = win("scrollHeight") - win("clientHeight");
+//    win("scrollTop", maxST);
+//    console.log(win("scrollTop", maxST));
+//
+//    //因为操作页面和浏览器的盒子模型,为了兼容所有的浏览器,每一次都要document.documentElement.xxx||document.body.xxx写起来非常的麻烦,而win是把一些每次必写的进行封装
+//    //attr是我们要操作的属性名(scrollHeight/clientHeight...)
+//    //value的情况特殊:传递了值,我们默认是给页面设置值,不传递值我们默认是获取页面的值
+//    function win(attr, value) {
+//        if (typeof value === "undefined") {
+//            return document.documentElement[attr] || document.body[attr];
+//        }
+//        document.documentElement[attr] = value;
+//        document.body[attr] = value;
+//    }
+//    console.log(win("scrollTop", maxST));
+    function getCss(ele,attr){
+        if(window.getComputedStyle){
+            return getComputedStyle(ele,null)[attr];
         }
-        document.documentElement[attr] = value;
-        document.body[attr] = value;
+        else{
+            return ele.currentStyle[attr];
+        }
     }
+    var h=getCss(ele,"height");
+    console.log(h);
 </script>
 </body>
 </html>

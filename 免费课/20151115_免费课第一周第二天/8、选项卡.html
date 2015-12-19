@@ -143,12 +143,26 @@
     //        })(i);
     //    }
 
+    //    for (var i = 0; i < oLis.length; i++) {
+    //        ~function (i) {
+    //            oLis[i].onclick = function () {
+    //                changeTab(i);
+    //            }
+    //        }(i);
+    //    }
+    function changeTab() {
+        for (var i = 0; i < oLis.length; i++) {
+            oLis[i].className = null;
+            oDivs[i].className = null;
+        }
+        this.className = "select";
+        oDivs[this.index].className = "select";
+    }
     for (var i = 0; i < oLis.length; i++) {
-        ~function (i) {
-            oLis[i].onclick = function () {
-                changeTab(i);
-            }
-        }(i);
+        oLis[i].index = i;
+        oLis[i].onclick = function () {
+            changeTab.call(this);
+        }
     }
 </script>
 </body>

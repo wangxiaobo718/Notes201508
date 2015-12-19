@@ -57,6 +57,8 @@
     //document.documentElement.scrollHeight||document.body.scrollHeight
     //总结：如果你当前操作的是浏览器或者整个页面,想兼容所有的浏览器,需要写上 document.documentElement.xxx||document.body.xxx (而且顺序不能变)
 
+
+
     var body = document.body;
     var outer = document.getElementById("outer");
     var inner = document.getElementById("inner");
@@ -116,9 +118,9 @@
     //        return {left: l, top: t};
     //    }
 
-    function offset(curEle) {
-        var l = curEle.offsetLeft, t = curEle.offsetTop;
-        var p = curEle.offsetParent;
+    function offset() {
+        var l = inner.offsetLeft, t = inner.offsetTop;
+        var p = inner.offsetParent;
         while (p.tagName.toLowerCase() != "body") {
             if (navigator.userAgent.indexOf("MSIE 8.0") === -1) {
                 l += p.clientLeft;
@@ -130,14 +132,14 @@
         }
         return {left: l, top: t};
     }
-    var obj = offset(inner);
-    console.log(obj);
+//    var obj = offset();
+    console.log(offset());
 
 
     //思考题:jQuery中除了有一个叫做offset的方法外,还有一个叫做position的方法
-    function position(curEle) {
-        //获取当前元素距离它的parentNode的偏移量
-    }
+//    function position(curEle) {
+//        //获取当前元素距离它的parentNode的偏移量
+//    }
 </script>
 </body>
 </html>

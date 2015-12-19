@@ -15,6 +15,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+
         }
 
         #div1 {
@@ -76,8 +77,8 @@
     //2、通过 window.getComputedStyle 获取所有经过浏览器计算的样式(只要的你的元素在浏览器加载的时候渲染过,能够在页面中展示,那么当前元素的所有的样式都是经过浏览器计算的,哪怕你没有写)
     //window.getComputedStyle(要操作的元素,元素的伪类(JS一般不用->null)) ->这个获取到的结果是一个对象数据类型的值(CSSStyleDeclaration内置类的一个实例),里面包含了我们所有经过浏览器计算过的样式属性名和属性值
     //我们想获取其中某一个样式的值,只需要对象.属性名即可->获取的结果根据自身的情况是带这个单位的
-    //var obj = window.getComputedStyle(oDiv, null);
-    //console.log(obj.height);
+//    var obj = window.getComputedStyle(oDiv, null);
+//    console.log(obj.height);
 
     //虽然上述的方法很好用,但是在IE6~8下不兼容 ->currentStyle
     //var obj = oDiv.currentStyle;

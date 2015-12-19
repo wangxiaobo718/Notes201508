@@ -13,7 +13,7 @@ body, div, table, thead, tbody, tr, th, td {
     width: 400px;
     border: 1px solid #008000;
 
-    /*ÏÂÊö¶¼ÊÇCSS3ĞÂÔö¼ÓµÄÑùÊ½ÊôĞÔ:ÔÚIE6~8ÏÂ²»¼æÈİ*/
+    /*ä¸‹è¿°éƒ½æ˜¯CSS3æ–°å¢åŠ çš„æ ·å¼å±æ€§:åœ¨IE6~8ä¸‹ä¸å…¼å®¹*/
     border-radius: 5px;
     box-shadow: 3px 3px 8px 0 #999;
 }

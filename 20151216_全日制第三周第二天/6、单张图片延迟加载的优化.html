@@ -44,7 +44,6 @@
         if (oDivImg.isLoad) {//如果标识上记录了已经加载完成了,我们在滚动的时候下面的代码就没必要执行了
             return;
         }
-
         var winT = document.documentElement.scrollTop || document.body.scrollTop;
         if ((winT + winH) >= (imgH + imgT)) {
             var trueImg = oDivImg.getAttribute("trueImg");

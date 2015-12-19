@@ -44,15 +44,15 @@
     //    console.log(reg.exec(str));//->null
 
     //3)自己编写程序获取正则捕获的所有的内容（一定不要忘记加g）
-    //    var reg = /\d+/g;
-    //    var str = "zhufeng2015peixun2016yangfan2017";
-    //    var ary = [];
-    //    var res = reg.exec(str);
-    //    while (res) {
-    //        ary.push(res[0]);
-    //        res = reg.exec(str);
-    //    }
-    //    console.log(ary);
+//        var reg = /\d+/g;
+//        var str = "zhufeng2015peixun2016yangfan2017";
+//        var ary = [];
+//        var res = reg.exec(str);
+//        while (res) {
+//            ary.push(res[0]);
+//            res = reg.exec(str);
+//        }
+//        console.log(ary);
 
     //4)贪婪性  正则的每一次捕获都是按照匹配最长的结果捕获的,例如:2符合正则 2015也符合正则,我们默认捕获的是2015
     //    var reg = /\d+/g;//->出现一到多个0-9之间的数字
@@ -63,15 +63,15 @@
     //?在正则中有很多的作用:
     //放在一个普通的元字符后面代表出现0-1次 /\d?/ ->数字可能出现也可能不出现
     //放在一个量词的元字符后面是取消捕获时候的贪婪性
-    //    var reg = /\d+?/g;
-    //    var str = "zhufeng2015peixun2016yangfan2017";
+//        var reg = /\d+?/g;
+//        var str = "zhufeng2015peixun2016yangfan2017";
     //    //console.log(reg.exec(str));//->["2"...]
-    //    var ary = [], res = reg.exec(str);
-    //    while (res) {
-    //        ary.push(res[0]);
-    //        res = reg.exec(str);
-    //    }
-    //    console.log(ary);
+//        var ary = [], res = reg.exec(str);
+//        while (res) {
+//            ary.push(res[0]);
+//            res = reg.exec(str);
+//        }
+//        console.log(ary);
 
     //3、字符串中的match方法->把所有和正则匹配的字符都获取到
     //    var reg = /\d+?/g;

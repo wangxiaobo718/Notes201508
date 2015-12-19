@@ -11,7 +11,7 @@ https://github.com/zhufengpeixun/Share201508.git (以后的作业/项目/代码�
 
 3、深刻的来理解函数的三种角色
     var num = 0;
-    function Fn(num) {
+    function Fn(num){
         arguments[0] = 100;
         this.num = 200;
         console.log(num);
@@ -24,13 +24,11 @@ https://github.com/zhufengpeixun/Share201508.git (以后的作业/项目/代码�
     Fn.prototype.getNum = function () {
         console.log(this.num);
     };
-
     var f = new Fn(num);
     console.log(f.num);
     f.getNum();
     Fn.prototype.getNum();
     console.log(num);
-
     var n = Fn(num);
     console.log(n);
     console.log(num);
