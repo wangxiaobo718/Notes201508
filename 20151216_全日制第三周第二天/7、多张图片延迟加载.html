@@ -107,7 +107,6 @@
 
     //3、实现图片延迟加载
     var winH = document.documentElement.clientHeight || document.body.clientHeight;
-
     function delayImg() {
         for (var i = 0; i < imgList.length; i++) {
             ~function (i) {
@@ -115,7 +114,6 @@
             }(i);
         }
     }
-
     function delayImgCode(i) {
         var curImg = imgList[i];
         //->如果当前图片还没有加载真实的我们开始加载
@@ -125,20 +123,21 @@
             //->获 取浏览器当前底边框距离body的上偏移
             var winT = (document.documentElement.scrollTop || document.body.scrollTop) + winH;
             //->说明我们的图片已经出现在整个浏览器窗口中,开始加载真实的图片
-            if (winT >= curImgT) {
+            if (winT>= curImgT) {
                 var trueImg = curImg.getAttribute("trueImg");
                 var oImg = new Image;
                 oImg.src = trueImg;
                 oImg.onload = function () {
                     curImg.src = trueImg;
                     oImg = null;
+                    curImg.isLoad = true;
                 };
-                curImg.isLoad = true;
+
             }
         }
     }
 
-    window. delayImg;
+    window.onscroll=delayImg;
     window.onscroll();//->第一次打开页面先自己手动执行一次onscroll事件
 </script>
 </body>
