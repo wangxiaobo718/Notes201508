@@ -69,13 +69,13 @@
     //2)oLis.length 存储的是当前集合中li的个数
     //我们把具备这两项规则和形式的对象称之为"类数组"(类似数组但是不是数组)
 
-    //    var oUl = document.getElementById("ul1");
-    //    var oLis = oUl.getElementsByTagName("li");//->获取#ul1下所有的li
-    //    for (var i = 0; i < oLis.length; i++) {
-    //        var oLi = oLis[i];
-    //        //oLi.className = (i % 2 === 0 ? "bg0" : "bg1");
-    //        oLi.className = "bg" + i % 2;
-    //    }
+   var oUl = document.getElementById("ul1");
+   var oLis = oUl.getElementsByTagName("li");//->获取#ul1下所有的li
+   for (var i = 0; i < oLis.length; i++) {
+       var oLi = oLis[i];
+       //oLi.className = (i % 2 === 0 ? "bg0" : "bg1");
+       oLi.className = "bg" + i % 2;
+   }
 
 
     //由于要给每一个li都设置样式的值,我们采用for循环的方式重复的进行处理
