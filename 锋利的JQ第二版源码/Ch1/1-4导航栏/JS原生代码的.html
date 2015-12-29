@@ -6,28 +6,9 @@
 <link rel="stylesheet" href="css/default.css" type="text/css" />
 
 <!-- 引入 jQuery -->
-<script src="../../scripts/jquery.js" type="text/javascript"></script>
+
 <script type="text/javascript">
-//等待dom元素加载完毕.
-$(document).ready(function(){
-	$(":hidden");
-	$(":visible");
-	$("li:first")
-});
-$(function(){
-	$("li.level1>a").click(function(e) {
-		var ul=$(this).next();
-		ul.is("ul")
-		if(ul.is(":visible")){
-			ul.hide(600);
-		}else{
-        	ul.show(600).parent().siblings().children("ul").hide(600);
-		}
-		e.preventDefault();
-		return false;//这两种方式都是阻止事件默认行为
-    });
-	
-});//是document.ready简单写
+
 </script>
 
 </head>
@@ -68,3 +49,22 @@ $(function(){
 
 </body>
 </html>
+<script src="../../../20151220_周末班第三周第二天/DOM.js"></script>
+<script>
+var level1s=DOM.getElesByClass("level1");
+
+for(var i=0;i<level1s.length;i++){
+	DOM.children(level1s[i],"a")[0].onclick=function(){
+		var ul=DOM.next(this)
+		ul.style.display="block";//让自己的菜单项显示
+		var ulSiblings=DOM.siblings(ul.parentNode);
+		for(var i=0;i<ulSiblings.length;i++){
+			//让其它的菜单项隐藏
+			DOM.children(ulSiblings[i],"ul")[0].style.display="none";
+		}
+		
+		return false;
+	}
+}
+
+</script>

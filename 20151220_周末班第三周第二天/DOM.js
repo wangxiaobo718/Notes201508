@@ -116,7 +116,8 @@ DOM.closest=function (ele){//找相邻的弟弟和哥哥
 	return a;//a可以是空数组
 }
 
-DOM.children=function(ele){
+//筛选指定标签名的子元素，必须是两个参数
+DOM.children=function(ele,strTag){//strTag表示通过这个变量指明的标签来筛选子元素
 	var children=ele.children;
 	//if(!ele.nextElementSibling){//通过这样的判断来判断出这是IE
 	//typeof null =="object";
@@ -130,23 +131,25 @@ DOM.children=function(ele){
 	//最好的办法是 typeof ele.attribute =="object";
 	//尽量不要用if(ele.attribute)的方法
 	//if(typeof ele.nextElementSibling =="undefined"){
-	if(typeof ele.nextElementSibling!="object"){//做这个判断的目的是避免在标准浏览器里做遍历筛选
+	if(1){//做这个判断的目的是避免在标准浏览器里做遍历筛选
 		var a=[];
 		//ele.childNodes 它包含更多类型的子节点10
 		//ele.children;//它只可能包含元素和注释节点，所以性能更好，效率更高 children不包括文本节，
 		for(var i=0;i<children.length;i++){
 			var child=children[i];
-			if(child.nodeType===1){
+			//tagName这个属性，只有元素节点才有。所以不需要判断nodeType就可以了
+			//child.nodeType===1&&child.tagName===strTag.toUpperCase()
+			if(child.tagName==strTag.toUpperCase()){
 				a.push(child);	
 			}		
 		}
 		return a;
 	}
-	return children;//如果是标准浏览器，把children返回就好。如果能确保HTML页面里没有注释节点，那就不需要写这个方法了
+	//return children;//如果是标准浏览器，把children返回就好。如果能确保HTML页面里没有注释节点，那就不需要写这个方法了
 	
 }
 
-DOM.children=function(ele){//获得ele的所有的元素子节点
+DOM._children=function(ele){//获得ele的所有的元素子节点
 	var children=ele.children;
 	
 	if(typeof ele.nextElementSibling !="object"){
