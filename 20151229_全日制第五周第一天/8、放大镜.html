@@ -69,7 +69,7 @@
 
 <script type="text/javascript">
     var box = document.getElementById("box");
-    var boxL = box.offsetLeft - box.clientLeft, boxT = box.offsetTop - box.clientTop;
+    var boxL = box.offsetLeft + box.clientLeft, boxT = box.offsetTop + box.clientTop;
 
     var boxBig = document.getElementById("boxBig");
     var boxBigImg = boxBig.getElementsByTagName("img")[0];
