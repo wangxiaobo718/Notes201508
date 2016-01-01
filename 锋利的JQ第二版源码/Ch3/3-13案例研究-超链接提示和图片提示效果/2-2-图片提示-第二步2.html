@@ -64,12 +64,26 @@ li{
 </body>
 </html>
 <script>
-$("a.tooltip").mouseover(function(e){
-	var $tooltip=$("<div id='tooltip'><img src='"+this.href+"'/></div>");	
-	$tooltip.appendTo("body").css({left:e.pageX,top:e.pageY}).show(600);
-}).mousemove(function(e) {
-    
-}).mouseout(function(e) {
-    
-});;
+
+$("<div id='div1'><p>p1</p><p>p2</p></div>").appendTo(document.body);
+//$(document.body).html("<div id='div1'><p>p1</p><p>p2</p></div>");
+//document.body.innerHTML="<div id='div1'><p>p1</p><p>p2</p></div>"
+//$方法的参数：
+//1、CSS selector;查找
+//2、HTML str ;创建DOM元素
+//3、可以是DOM对象 $(ele),$(this),$(document.body);
+//4、可以是一个不可符别的字符串，返回一个空jQuery对象
+//5、还可以是两个参数，其中第二个参数是第一个参数的上下文
+
+
+//伤其十指不如断其一指
+//选项卡，表格排序，图片延迟加载，tween动画
+//事件基本一定掌握，都是记的东西
+//事件原理很抽像--观察者（订阅发布模式）--理解
+//promise/A
+//Ajax 重点在于理解，应用起来非常简单--难在服务器和客户端的模型上了。
+//我讲的和周老师必须会，小张讲的，学会的都是学霸
+//移动端一定熟练 
+//HTML5  
+
 </script>
