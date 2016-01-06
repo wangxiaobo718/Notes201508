@@ -45,7 +45,6 @@ changeBg();
 function sortList(index) {
     //a、将类数组转换为数组
     var ary = utils.listToArray(oRows);
-
     //b、给数组进行排序(默认都是从小到大)
     ary.sort(function (a, b) {
         //获取到当前行和下一行第三列的内容,按照内容的大小进行排序
@@ -71,6 +70,7 @@ function sortList(index) {
     } else {
         this.flag = "asc";
     }
+    console.log(this);
 
     //c、按照最新排列的顺序把我们的tr重新的添加到页面中
     var frg = document.createDocumentFragment();

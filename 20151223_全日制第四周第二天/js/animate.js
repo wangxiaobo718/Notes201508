@@ -28,7 +28,7 @@ var animate = (function () {
         reg = /^-?(\d|([1-9]\d+))(\.\d+)?(px|pt|em|rem|vh|vw)$/;
         return reg.test(val) ? parseFloat(val) : val;
     };
-
+    //
     //setCss:设置当前元素的指定的样式
     var setCss = function (curEle, attr, value) {
         var reg = /^(width|height|top|left|right|bottom|((margin|padding)(Left|Top|Right|Bottom)?))$/;
@@ -46,67 +46,67 @@ var animate = (function () {
             curEle["style"][attr] = value;
         }
     };
-
+    //
     //zhufengEffect:珠峰培训TWEEN算法公式
     //t->times 已经运动的时间, b->begin 开始的位置, c->change 总运动距离(结尾的位置-开始的位置), d->duration 总运动时间
-    var zhufengEffect = {
-        //匀速
-        Linear: function (t, b, c, d) {
-            return c * t / d + b;
-        },
-        //指数衰减的反弹缓动
-        Bounce: {
-            easeIn: function (t, b, c, d) {
-                return c - zhufengEffect.Bounce.easeOut(d - t, 0, c, d) + b;
+        var zhufengEffect = {
+            //匀速
+            Linear: function (t, b, c, d) {
+                return c * t / d + b;
             },
-            easeOut: function (t, b, c, d) {
-                if ((t /= d) < (1 / 2.75)) {
-                    return c * (7.5625 * t * t) + b;
-                } else if (t < (2 / 2.75)) {
-                    return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
-                } else if (t < (2.5 / 2.75)) {
-                    return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
-                } else {
-                    return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+            //指数衰减的反弹缓动
+            Bounce: {
+                easeIn: function (t, b, c, d) {
+                    return c - zhufengEffect.Bounce.easeOut(d - t, 0, c, d) + b;
+                },
+                easeOut: function (t, b, c, d) {
+                    if ((t /= d) < (1 / 2.75)) {
+                        return c * (7.5625 * t * t) + b;
+                    } else if (t < (2 / 2.75)) {
+                        return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
+                    } else if (t < (2.5 / 2.75)) {
+                        return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
+                    } else {
+                        return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+                    }
+                },
+                easeInOut: function (t, b, c, d) {
+                    if (t < d / 2) {
+                        return zhufengEffect.Bounce.easeIn(t * 2, 0, c, d) * .5 + b;
+                    }
+                    return zhufengEffect.Bounce.easeOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
                 }
             },
-            easeInOut: function (t, b, c, d) {
-                if (t < d / 2) {
-                    return zhufengEffect.Bounce.easeIn(t * 2, 0, c, d) * .5 + b;
-                }
-                return zhufengEffect.Bounce.easeOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
-            }
-        },
-        //二次方的缓动
-        Quad: {
-            easeIn: function (t, b, c, d) {
-                return c * (t /= d) * t + b;
-            },
-            easeOut: function (t, b, c, d) {
-                return -c * (t /= d) * (t - 2) + b;
-            },
-            easeInOut: function (t, b, c, d) {
-                if ((t /= d / 2) < 1) {
-                    return c / 2 * t * t + b;
-                }
-                return -c / 2 * ((--t) * (t - 2) - 1) + b;
-            }
-        },
+    //    //二次方的缓动
+    //    Quad: {
+    //        easeIn: function (t, b, c, d) {
+    //            return c * (t /= d) * t + b;
+    //        },
+    //        easeOut: function (t, b, c, d) {
+    //            return -c * (t /= d) * (t - 2) + b;
+    //        },
+    //        easeInOut: function (t, b, c, d) {
+    //            if ((t /= d / 2) < 1) {
+    //                return c / 2 * t * t + b;
+    //            }
+    //            return -c / 2 * ((--t) * (t - 2) - 1) + b;
+    //        }
+    //    },
         //三次方的缓动
-        Cubic: {
-            easeIn: function (t, b, c, d) {
-                return c * (t /= d) * t * t + b;
-            },
-            easeOut: function (t, b, c, d) {
-                return c * ((t = t / d - 1) * t * t + 1) + b;
-            },
-            easeInOut: function (t, b, c, d) {
-                if ((t /= d / 2) < 1) {
-                    return c / 2 * t * t * t + b;
-                }
-                return c / 2 * ((t -= 2) * t * t + 2) + b;
-            }
-        },
+        //Cubic: {
+        //    easeIn: function (t, b, c, d) {
+        //        return c * (t /= d) * t * t + b;
+        //    },
+        //    easeOut: function (t, b, c, d) {
+        //        return c * ((t = t / d - 1) * t * t + 1) + b;
+        //    },
+        //    easeInOut: function (t, b, c, d) {
+        //        if ((t /= d / 2) < 1) {
+        //            return c / 2 * t * t * t + b;
+        //        }
+        //        return c / 2 * ((t -= 2) * t * t + 2) + b;
+        //    }
+        //},
         //四次方的缓动
         Quart: {
             easeIn: function (t, b, c, d) {
@@ -180,23 +180,23 @@ var animate = (function () {
             }
         },
         //超过范围的三次方缓动
-        Back: {
-            easeIn: function (t, b, c, d, s) {
-                if (s == undefined) s = 1.70158;
-                return c * (t /= d) * t * ((s + 1) * t - s) + b;
-            },
-            easeOut: function (t, b, c, d, s) {
-                if (s == undefined) s = 1.70158;
-                return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
-            },
-            easeInOut: function (t, b, c, d, s) {
-                if (s == undefined) s = 1.70158;
-                if ((t /= d / 2) < 1) {
-                    return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
-                }
-                return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
-            }
-        },
+        //Back: {
+        //    easeIn: function (t, b, c, d, s) {
+        //        if (s == undefined) s = 1.70158;
+        //        return c * (t /= d) * t * ((s + 1) * t - s) + b;
+        //    },
+        //    easeOut: function (t, b, c, d, s) {
+        //        if (s == undefined) s = 1.70158;
+        //        return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
+        //    },
+        //    easeInOut: function (t, b, c, d, s) {
+        //        if (s == undefined) s = 1.70158;
+        //        if ((t /= d / 2) < 1) {
+        //            return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
+        //        }
+        //        return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
+        //    }
+        //},
         //指数衰减的正弦曲线缓动
         Elastic: {
             easeIn: function (t, b, c, d, a, p) {
@@ -226,7 +226,7 @@ var animate = (function () {
             }
         }
     };
-
+    //
     //实现我们的animate动画库
     return function (curEle, options, duration, effect, callback) {
         //init effect
@@ -251,7 +251,7 @@ var animate = (function () {
             //我们的第四项的运动方式没有传递,第四个参数的值应该是我们第五个形参callback的值
             callback = effect;
         }
-
+    //
         //init parameter
         var times = 0, interval = 15, oBegin = {}, oChange = {};
         for (var key in options) {

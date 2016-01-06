@@ -1,4 +1,4 @@
-var winW = document.documentElement.clientWidth || document.body.clientWidth;
+                                                                                                                                                                                var winW = document.documentElement.clientWidth || document.body.clientWidth;
 var winH = document.documentElement.clientHeight || document.body.clientHeight;
 var oDiv = document.getElementById("div1");
 
@@ -20,7 +20,7 @@ function down(e) {
         on(this, "mouseup", up);
     } else {
         //绑定给document的话前往不要忘记让方法中的this重新指向当前的元素
-        this.moveFn = processThis(this, move);
+                                                              this.moveFn = processThis(this, move);
         this.upFn = processThis(this, up);
         on(document, "mousemove", this.moveFn);
         on(document, "mouseup", this.upFn);

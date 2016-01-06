@@ -42,13 +42,13 @@
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
     $(".tab li").click(function () {
-        //$(this) ->当前点击的那一个li
-        var $index = $(this).index();
         $(this).addClass("select").siblings().removeClass("select");
         $(this).parent().siblings().each(function (index, item) {
             index === $index ? $(item).addClass("select") : $(item).removeClass("select");
         });
     });
+    //$(this) ->当前点击的那一个li
 </script>
 </body>
+var $index = $(t                                                                         his).index();
 </html>

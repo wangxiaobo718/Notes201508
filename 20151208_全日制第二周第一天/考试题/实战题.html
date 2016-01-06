@@ -45,12 +45,19 @@
     //        }(i);
     //    }
 
-    for (var i = 0; i < oBtn.length; i++) {
-        oBtn[i].onmouseover = (function (i) {
-            return function () {
-                document.body.style.backgroundColor = ary[i];
-            }
-        })(i);
+//    for (var i = 0; i < oBtn.length; i++) {
+//        oBtn[i].onmouseover = (function (i) {
+//            return function () {
+//                document.body.style.backgroundColor = ary[i];
+//            }
+//        })(i);
+//    }
+    for(var i=0;i<oBtn.length;i++){
+        oBtn[i].onmouseover=(function(i){
+            return function(){
+                document.body.style.backgroundColor=ary[i];
+            };
+        }(i));
     }
 </script>
 </body>

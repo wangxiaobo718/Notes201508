@@ -41,15 +41,15 @@
         var mark = document.createElement("div");
         mark.id = "mark";
         this.appendChild(mark);
-        mark.style.top = e.clientY - offTop + 20 + "px";
-        mark.style.left = e.clientX - offLeft + 20 + "px";
+        mark.style.top = e.clientY - offTop + "px";
+        mark.style.left = e.clientX - offLeft  + "px";
     };
     box.onmousemove = function (e) {
         e = e || window.event;
         var mark = document.getElementById("mark");
         if (mark) {
-            mark.style.top = e.clientY - offTop + 20 + "px";
-            mark.style.left = e.clientX - offLeft + 20 + "px";
+            mark.style.top = e.clientY - offTop + "px";
+            mark.style.left = e.clientX - offLeft  + "px";
         }
     };
     box.onmouseleave = function (e) {

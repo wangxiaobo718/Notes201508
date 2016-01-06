@@ -52,7 +52,6 @@
 
     //2)将元素集合的类数组转换为数组
     var oLisAry = utils.listToArray(oLis);
-
     //3)给我们的数组进行排序:按照每一个li中的内容进行排序
     oLisAry.sort(function (a, b) {
         return parseFloat(a.innerHTML) - parseFloat(b.innerHTML);
@@ -68,12 +67,12 @@
     //->页面中的元素标签和JS通过DOM方法获取的元素对象是紧紧的绑定在一起的,一个改变另外一个也会发生改变
     //[案例一]
     //我们之前获取的元素集合和页面中的#ul1这个容器是映射到一起的,页面中新增加一个li,我不需要从新的获取oLis,oLis也同样会跟着改变
-    //    var oUl = document.getElementById("ul1");
-    //    var oLis = oUl.getElementsByTagName("li");
-    //    console.log(oLis.length);//->6
-    //    var oLi = document.createElement("li");
-    //    oUl.appendChild(oLi);
-    //    console.log(oLis.length);//->7
+        var oUl = document.getElementById("ul1");
+        var oLis = oUl.getElementsByTagName("li");
+        console.log(oLis.length);//->6
+        var oLi = document.createElement("li");
+        oUl.appendChild(oLi);
+        console.log(oLis.length);//->7
 </script>
 </body>
 </html>
