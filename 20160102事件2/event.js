@@ -1,3 +1,5 @@
+bind(ele,"click",run);
+bind(ele,"click",run);
 function bind(ele,type,fn){//把fn方法绑定给ele的type这个事件
 	if(ele.addEventListener){
 		ele.addEventListener(type,fn,false);	
