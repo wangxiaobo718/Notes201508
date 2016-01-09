@@ -8,7 +8,7 @@ function bind(ele,type,fn){//把fn方法绑定给ele的type这个事件
 			ele["aEvent"+type]=[];
 		}
 		var a=ele["aEvent"+type];
-		for(var i=0;i<a.length;i++){
+		for(var i=0;i<a.length;i++){//避免重复绑定
 			if(a[i].photo==fn)return;
 		}
 		var fnTemp=function (){fn.call(ele)}//这样做就可以使fn在执行的时候，让fn的this指向ele
