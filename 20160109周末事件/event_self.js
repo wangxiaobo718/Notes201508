@@ -54,6 +54,18 @@ function run(){
 }
 
 function off(ele,type,fn){
+	if(/^self/.test(type)){
+		var a=ele["self"+type];
+		if(a){
+			for(var i=0;i<a.length;i++){
+				if(a[i]==fn){
+					a[i]=null;
+					break;	
+				}
+			}
+		}
+		return;
+	}
 	if(ele.removeEventListener){
 		ele.removeEventListener(type,fn,false);
 		return;	
@@ -81,17 +93,21 @@ function processThis(obj,fn){//fn.bind的实现原理
 //"selfdrag"
 
 
-//言语，道断，心行处，灭
+//言语，道断;心行处，灭
 
 function selfRun(selfType,e){//selfType是自定义的事件类型，e是系统的事件对象
 	var a=this["self"+selfType];
 	if(a){
 		for(var i=0;i<a.length;i++){
-			a[i].call(this,e);
+			if(typeof a[i]=="function"){
+				a[i].call(this,e);
+			}else{
+				a.splice(i,1);
+				i--;	
+			}
 		}
 	}
 
-	
 }
 
 
