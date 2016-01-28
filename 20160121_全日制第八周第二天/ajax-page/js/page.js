@@ -1,7 +1,7 @@
 (function () {
     var count = 10, curPage = 1, totalPage = 1, dataAry = null;
 
-    var pageList = document.getElementById("pageList");
+    //var pageList = document.getElementById("pageList");
     var pageListLis = pageList.getElementsByTagName("li");
 
     var list = document.getElementById("list");
@@ -57,7 +57,7 @@
         }
         list.innerHTML = str;
         changeBg();
-
+        cons
         //给每一个li绑定点击事件,实现跳转到详细页
         for (var k = 0; k < listLis.length; k++) {
             listLis[k].onclick = function () {
@@ -121,7 +121,6 @@
             }
         };
     }
-
     //1、Ajax读取需要绑定的数据
     var xhr = createXHR();
     xhr.open("get", "data.txt?_=" + Math.random(), true);
@@ -144,7 +143,7 @@ function createXHR() {
         } else if (new ActiveXObject("Msxml2.XMLHTTP")) {
             xhr = new ActiveXObject("Msxml2.XMLHTTP");
         } else if (new ActiveXObject("Msxml3.XMLHTTP")) {
-            xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            xhr = new ActiveXObject("Msxml3.XMLHTTP");
         }
     }
     return xhr;

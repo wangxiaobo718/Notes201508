@@ -46,6 +46,7 @@ function run(e){
 	var a=this["onevent"+type];
 	for(var i=0;i<a.length;i++){
 		if(typeof a[i]=="function"){
+
 			a[i].call(this,e);
 			}
 			else{

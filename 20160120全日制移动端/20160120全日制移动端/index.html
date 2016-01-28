@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name = "viewport" content="width=device-width,initial-scale =1.0,user-scalable=no">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        #inner {
+            width: 500%;
+            height: 200px;
+            list-style: none;
+        }
+        #inner li{
+            float: left;
+            width:20%;
+            height: 200px;
+        }
+        #inner li:nth-of-type(1){
+            background: palegreen;
+        }
+        #inner li:nth-child(2){
+            background: yellow;
+        }
+        #inner li:nth-child(3){
+            background: blue;
+        }
+        #inner li:nth-child(4){
+            background: pink;
+        }
+        #inner li:nth-child(5){
+            background: paleturquoise;
+        }
+        #item{
+            position: absolute;
+            right: 10px;
+            bottom:20px
+        }
+        #item li{
+            display: inline-block;
+            width: 20px;
+            height:20px;
+            border-radius: 50%;
+            background: coral;
+            color: #fff;
+            margin: 0 5px;
+            text-align: center;
+        }
+        #item li.cur{
+            background: black;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <ul id="inner">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul id="item">
+            <li class="cur">1</li><li>2</li><li>3</li><li>4</li><li>5</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    var slider = {
+       init: function(ele){
+            this.inner = ele.inner || {};
+            this.oLis = ele.oLis || {};
+            this.items = ele.items ||{};
+            var that = this;
+           [].forEach.call(this.oLis,function(){
+              var oLi = arguments[0];
+               oLi.index = arguments[1];
+               oLi.addEventListener("touchstart",that.start,false);
+               oLi.addEventListener("touchmove",that.move,false);
+               oLi.addEventListener("touchend",that.end,false);
+           })
+       },
+        start: function(e){
+            //把开始的触摸点坐标记录下来
+            this.startX = e.changedTouches[0].pageX;
+            this.time = +new Date();
+        },
+        move :function(e){
+            e.preventDefault();
+            var that = slider;
+            var touchMove = e.changedTouches[0].pageX;
+            var movePos = touchMove - this.startX;//把移动的距离记录下来
+            this.change = movePos;
+               /* 往左滑:-(this.offsetWidth*this.index+移动的距离)
+                    -this.offsetWidth*this.index-移动的距离(movePos刚好是负的值)
+                往右滑:-(this.offsetWidth*this.index-移动的距离)
+                    -this.offsetWidth*this.index+移动的距离(movePos刚好是正的值)*/
+                //translate()移动的距离都是负数
+              var pos = movePos-this.offsetWidth*this.index;
+            that.inner.style.webkitTransform = "translate("+pos+"px,0)";
+
+
+        },
+        end :function(){
+            //首先处理索引,往左滑是想让下一张显示,所以索引要++,往右滑是想让前一张显示,所以索引要--;
+            var date = +new Date();
+            var time = date-this.time;
+            var index  = this.index;
+            var that = slider;
+            var len = that.oLis.length;
+            if(time>100){//间隔时间是否大于100毫秒
+                if(this.change>0){//往右滑
+                    index = (index==0?0:index-1);//需要判断是否是第一张
+                }else{ //往左滑
+                    index = (index==len-1?len-1:index+1);//需要判断是否是最后一张
+                }
+                that.inner.style.webkitTransform = "translate("+(-this.offsetWidth*index)+"px,0)";
+                that.inner.style.webkitTransition = "0.5s ease-out";
+                that.inner.addEventListener("webkitTransitionEnd",function(){
+                    this.style.webkitTransition = "";
+                    [].forEach.call(that.items,function(){
+                        arguments[0].className = "";
+                    })
+                    that.items[index].className = "cur";
+                },false)
+            }
+
+
+        }
+    }
+    var obj = {
+        inner :document.querySelector("#inner"),
+        oLis : document.querySelectorAll("#inner>li"),
+        items : document.querySelectorAll("#item>li")
+    }
+
+    slider.init(obj);
+
+</script>

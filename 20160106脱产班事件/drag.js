@@ -13,7 +13,6 @@ function down(e) {//给它一个事件标识符："selfDargStart";其实就是�
 		on(document,"mousemove",this.MOVE);
 		on(document,"mouseup",this.UP);
 	}
-	
 	e.preventDefault();
 	//通知:就是去指定的数组里按顺序执行相关的方法
 	selfRun.call(this,"selfDragStart",e);
@@ -36,7 +35,6 @@ function up(e){//给它一个事件标识符叫："selfDragEnd"/
 		off(document,"mouseup",this.UP);
 		}
 		selfRun.call(this,"selfDragEnd",e);
-		
 }
 
 function clearEffect(){

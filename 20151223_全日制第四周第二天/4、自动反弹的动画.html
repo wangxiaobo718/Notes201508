@@ -42,20 +42,16 @@
             var curL = utils.getCss(_this, "left");
             if (curL > target) {//->向左走
                 if (curL - 10 <= target) {//->已经走到左边的边界了
-                    _this.style.left = target + "px";
                     move.call(_this, tarRight);
                     return;
                 }
                 _this.style.left = curL - 10 + "px";
             } else if (curL < target) {//->向右走
                 if (curL + 10 >= target) {//->已经走到右边的边界了
-                    _this.style.left = target + "px";
                     move.call(_this, tarLeft);
                     return;
                 }
                 _this.style.left = curL + 10 + "px";
-            } else {
-                return;
             }
             _this.timer = window.setTimeout(_move, 10);
         }();

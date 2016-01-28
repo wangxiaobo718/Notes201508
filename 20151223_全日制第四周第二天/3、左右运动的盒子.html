@@ -10,7 +10,7 @@
         }
 
         #div1 {
-            position: absolute;
+            position: relative;
             top: 0;
             left: 0;
             width: 100px;
@@ -57,6 +57,47 @@
     //当前元素的位置(curL)
     //curL>target ->向左走
     //curL<target ->向右走
+//    function move(target){
+//        !function _move(){
+//            window.clearTimeout(oDiv.time);
+//            var cuL=utils.getCss(oDiv,"left");
+//            if(cuL>target){
+//                if(cuL<=target){
+//                    return;
+//                }
+//                oDiv.style.left=cuL-10+"px";
+//            }
+//            if(cuL<target){
+//                if(cuL>=target){
+//                    return;
+//                }
+//                oDiv.style.left=cuL+10+"px";
+//            }
+//             oDiv.time=window.setTimeout(_move,10);
+//        }();
+//    }
+////    btnLeft.onclick=
+////        move(tarLeft);
+////
+//
+//    btnRight.onclick=
+//        move(tarRight);
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     function move(target) {
         ~function _move() {
             window.clearTimeout(oDiv.timer);
@@ -73,8 +114,6 @@
                     return;
                 }
                 oDiv.style.left = curL + 10 + "px";
-            } else {
-                return;
             }
             oDiv.timer = window.setTimeout(_move, 10);
         }();

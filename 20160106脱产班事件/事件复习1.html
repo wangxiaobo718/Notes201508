@@ -29,7 +29,6 @@ function on(ele,type,fn){
 			if(ele["onevent"+type][i]==fn){
 				return
 			}
-			
 		}
 			ele["onevent"+type].push(fn);
 			//bind(ele,type,run);//IE中绑定的方法，在运行时this关键字的指向
@@ -40,7 +39,7 @@ function on(ele,type,fn){
 }
 function run(e){
 	e=window.event;
-	var type=e.type;//
+	var type=e.type;
 	var a=this["onevent"+type];
 	for(var i=0;i<a.length;i++){
 		if(typeof a[i]=="function"){

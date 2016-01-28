@@ -70,24 +70,21 @@
 </div>
 
 <script type="text/javascript">
-    var oTab = document.getElementById("tab");
-    var oLis = oTab.getElementsByTagName("li");
-    var oDivs = oTab.getElementsByTagName("div");
-
-    function changeTab() {
-        //->this变为当前点击的那一li
-
-        for (var i = 0; i < oLis.length; i++) {
-            oLis[i].className = null;
-            oDivs[i].className = null;
+    var oTab=document.getElementById("tab");
+    var oList=oTab.getElementsByTagName("li");
+    var oDiv=oTab.getElementsByTagName("div");
+    function a(){
+        for(var i=0;i<oList.length;i++){
+            oList[i].className=null;
+            oDiv[i].className=null;
         }
-        this.className = "select";
-        oDivs[this.index].className = "select";
+        this.className="select";
+        oDiv[this.index].className="select";
     }
-    for (var i = 0; i < oLis.length; i++) {
-        oLis[i].index = i;
-        oLis[i].onclick = function () {
-            changeTab.call(this);
+    for(var i=0;i<oList.length;i++){
+         oList[i].index=i;
+        oList[i].onclick=function(){
+            a.call(this);
         }
     }
 
