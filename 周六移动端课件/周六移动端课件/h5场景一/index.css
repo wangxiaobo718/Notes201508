@@ -51,8 +51,8 @@ html,body{
 
 }
 .a1 p:nth-child(even){
-    transform: translate(500px,0);
-    -webkit-transform: translate(500px,0);
+    transform: translate(100px,0);
+    -webkit-transform: translate(100px,0);
 }
 .a1 p:nth-child(odd){
     transform: translate(-500px,0);
@@ -61,8 +61,8 @@ html,body{
 #a1 p{
     transform: translate(0,0);
     -webkit-transform: translate(0,0);
-    transition:1s;
-    -webkit-transition:1s;
+    transition:10s;
+    -webkit-transition:10s;
 }
 .a2 p{
     width: 90px;
